@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>distributions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list-header>Pilih Distribusi</ion-list-header>
+  <ion-card>
+    <ion-label padding>Outlet</ion-label>
+    <ion-select>
+      <ion-select-option>1989</ion-select-option>
+      <ion-select-option>1990</ion-select-option>
+      <ion-select-option>1991</ion-select-option>
+      <ion-select-option>1992</ion-select-option>
+      <ion-select-option>1993</ion-select-option>
+      <ion-select-option selected>1994</ion-select-option>
+      <ion-select-option>1995</ion-select-option>
+      <ion-select-option>1996</ion-select-option>
+      <ion-select-option>1997</ion-select-option>
+      <ion-select-option>1998</ion-select-option>
+      <ion-select-option>1999</ion-select-option>
+    </ion-select>
+  </ion-card>
+
+  <ion-item>
+    <ion-checkbox [(ngModel)]="SelAll" (click)="SelectAll()"></ion-checkbox>
+    <ion-label>Select All</ion-label>
+  </ion-item>
+  <ion-item *ngFor="let distribution of this.distributions">
+    <ion-checkbox></ion-checkbox>
+    <ion-label>Welcome to {{ authUser?.name }}</ion-label>
+  </ion-item>
+
+
+  <ion-list>
+    <ion-item>
+      <ion-label><strong>Select All</strong></ion-label>
+      <ion-checkbox slot="start" [(ngModel)]="masterCheck" [indeterminate]="isIndeterminate"
+        (click)="checkMaster($event)"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item *ngFor="let distribution of distributions">
+      <ion-label>{{distribution.value}}</ion-label>
+      <ion-checkbox slot="start" [(ngModel)]="item.isChecked" (ionChange)="checkEvent()"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" share="round" color="primary" (click)="showModal()">Proses</ion-button>
+</ion-content>
